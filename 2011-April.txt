@@ -1,0 +1,26 @@
+From Joel.Vigneau at ifremer.fr  Wed Apr 13 13:40:52 2011
+From: Joel.Vigneau at ifremer.fr (Joel.Vigneau at ifremer.fr)
+Date: Wed, 13 Apr 2011 13:40:52 +0200
+Subject: [cost-users] COST and SOP
+Message-ID: <20110413134052.39561gkkek7i9wp0@vdmz1mail.ifremer.fr>
+
+Hi all
+
+we are working the French data in an internal WS in Ifremer with COST,  
+and the SOP discrepancy has not been dealt with in the project.  
+Indeed, the weight at length and @age are estimated independently from  
+the N at length and N at age, so we see that it often leads to SOP  
+discrepancies.
+
+My question is, did you also face this problem and of course, did you  
+write some code to deal with this. IMO, there are easy solutions  
+(translation on w at length) that  would prefer avoiding, and more  
+complex/proper solution (do you know some papers on this issue?),  
+that's why I would like your comments on this.
+
+Thanks in advance
+
+Joel
+
+
+

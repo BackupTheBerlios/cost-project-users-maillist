@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cost-project-users/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cost-project-users%40lists.berlios.de?Subject=Re%3A%20%5Bcost-users%5D%20catchCat%3D%22Lan%22%20and%20catReg%3D%22LAN%22&In-Reply-To=%3C4BD5444A.3090907%40ifremer.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000007.html">
+   <LINK REL="Next"  HREF="000009.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;</H1>
+    <B>Joel VIGNEAU</B> 
+    <A HREF="mailto:cost-project-users%40lists.berlios.de?Subject=Re%3A%20%5Bcost-users%5D%20catchCat%3D%22Lan%22%20and%20catReg%3D%22LAN%22&In-Reply-To=%3C4BD5444A.3090907%40ifremer.fr%3E"
+       TITLE="[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;">Joel.Vigneau at ifremer.fr
+       </A><BR>
+    <I>Mon Apr 26 09:44:10 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000007.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+        <LI>Next message: <A HREF="000009.html">[cost-users] New releases
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ernesto,
+
+You would have had a brilliant carreer as a detective!
+With this only email I learn a lot on how to look at a method.
+thanks for this.
+
+I'm sure Mathieu will arrange this very quickly with adding &quot;toupper&quot; 
+before using the variable.
+With the outcome of the recent WKCOST, new releases of the different 
+libraries will have to be uploaded on the website. When? is the 
+principal question...
+
+best regards
+
+Joel
+
+
+Le 23/04/2010 18:13, Ernesto Jardim a &#233;crit :
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> The problem is not with catchCat. As the code list shows, it should be 
+</I>&gt;<i> &quot;LAN&quot; or &quot;DIS&quot;
+</I>&gt;<i>
+</I>&gt;<i> &gt; library(COSTdbe)
+</I>&gt;<i> Loading required package: COSTcore
+</I>&gt;<i> -------------------------------------------------------------------
+</I>&gt;<i> COSTcore - &quot;The DCF Statistical Suite&quot;
+</I>&gt;<i> (Version: 1.3-8. Built on: R 2.11.0; ; 2010-04-23 14:06:37 UTC; unix)
+</I>&gt;<i> -------------------------------------------------------------------
+</I>&gt;<i> Loading required package: lattice
+</I>&gt;<i> Loading required package: boot
+</I>&gt;<i>
+</I>&gt;<i> Attaching package: 'boot'
+</I>&gt;<i>
+</I>&gt;<i> The following object(s) are masked from 'package:lattice':
+</I>&gt;<i>
+</I>&gt;<i>    melanoma
+</I>&gt;<i>
+</I>&gt;<i> Loading required package: tcltk
+</I>&gt;<i> Loading Tcl/Tk interface ... done
+</I>&gt;<i> &gt; data(code.list)
+</I>&gt;<i> &gt; code.list$catchCat
+</I>&gt;<i>  code description
+</I>&gt;<i> 1  DIS     Discard
+</I>&gt;<i> 2  LAN     Landing
+</I>&gt;<i>
+</I>&gt;<i> The problem is with catReg that is accepted to be &quot;LAN&quot; or &quot;Lan&quot; (or 
+</I>&gt;<i> others)
+</I>&gt;<i>
+</I>&gt;<i> &gt; code.list$catReg
+</I>&gt;<i>  code                              description
+</I>&gt;<i> 1  All                   Whole catch registered
+</I>&gt;<i> 2  Lan Only landed fraction of catch registered
+</I>&gt;<i> 3  Dis       Only discarded fraction registered
+</I>&gt;<i> 4  Non             None of the catch registered
+</I>&gt;<i> 5  ALL                   Whole catch registered
+</I>&gt;<i> 6  LAN Only landed fraction of catch registered
+</I>&gt;<i> 7  DIS       Only discarded fraction registered
+</I>&gt;<i> 8  NON             None of the catch registered
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> However, the RaiseLgth method, which calls a function &quot;Raise_Lgth&quot;, 
+</I>&gt;<i> uses another method called &quot;sampledFO&quot; that requires catReg to be 
+</I>&gt;<i> &quot;Lan&quot;. When you change codReg to &quot;LAN&quot; this method gives a empty 
+</I>&gt;<i> result that later breaks RaiseLgth.
+</I>&gt;<i>
+</I>&gt;<i> if you look at sampledFO with showMethods(&quot;sampledFO&quot;, includeDefs=TRUE)
+</I>&gt;<i>
+</I>&gt;<i> You may check that the fifth line is
+</I>&gt;<i>
+</I>&gt;<i> else frac &lt;- &quot;Lan&quot;
+</I>&gt;<i>
+</I>&gt;<i> and this is the problem. When you change catReg from &quot;Lan&quot; to &quot;LAN&quot; 
+</I>&gt;<i> this method fails and everything else too.
+</I>&gt;<i>
+</I>&gt;<i> Conclusion, there's nothing wrong with your data and using &quot;Lan&quot; for 
+</I>&gt;<i> catReg is ok, using &quot;LAN&quot; to catchCat is also ok. The bug is on 
+</I>&gt;<i> sampledFO, that should use &quot;Lan&quot; or &quot;LAN&quot;.
+</I>&gt;<i>
+</I>&gt;<i> I'll let the bug fixing for the package maintainer ;-)
+</I>&gt;<i>
+</I>&gt;<i> Hope it helped
+</I>&gt;<i>
+</I>&gt;<i> Best
+</I>&gt;<i>
+</I>&gt;<i> EJ
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Cost-project-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">Cost-project-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">https://lists.berlios.de/mailman/listinfo/cost-project-users</A>
+</I>
+-- 
+
+*/Jo&#235;l VIGNEAU/*
+
+IFREMER
+
+Laboratoire &quot;Ressources Halieutiques&quot;
+
+14 520 Port-en-Bessin
+
+T&#233;l. (33)2 31 51 56 41  - Fax (33)2 31 51 56 01
+
+m&#233;l : <A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">Joel.Vigneau at ifremer.fr</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">Joel.Vigneau at ifremer.fr</A>&gt;
+
+web : <A HREF="http://www.ifremer.fr">http://www.ifremer.fr</A> &lt;<A HREF="http://www.ifremer.fr/">http://www.ifremer.fr/</A>&gt;
+
+COST project coordinator
+
+<A HREF="http://wwz.ifremer.fr/cost">http://wwz.ifremer.fr/cost</A>
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cost-project-users/attachments/20100426/da196631/attachment.html">https://lists.berlios.de/pipermail/cost-project-users/attachments/20100426/da196631/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000007.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+	<LI>Next message: <A HREF="000009.html">[cost-users] New releases
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cost-project-users">More information about the Cost-project-users
+mailing list</a><br>
+</body></html>

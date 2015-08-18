@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [cost-users] Subsetting in COST
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cost-project-users/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:cost-project-users%40lists.berlios.de?Subject=Re%3A%20%5Bcost-users%5D%20Subsetting%20in%20COST&In-Reply-To=%3C4C9A252B02000092000044B0%40mail.fiskeriverket.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000016.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[cost-users] Subsetting in COST</H1>
+    <B>Sofia Carlshamre</B> 
+    <A HREF="mailto:cost-project-users%40lists.berlios.de?Subject=Re%3A%20%5Bcost-users%5D%20Subsetting%20in%20COST&In-Reply-To=%3C4C9A252B02000092000044B0%40mail.fiskeriverket.se%3E"
+       TITLE="[cost-users] Subsetting in COST">sofia.carlshamre at fiskeriverket.se
+       </A><BR>
+    <I>Wed Sep 22 15:47:55 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000016.html">[cost-users] Subsetting in COST
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear COST list
+ 
+I have some problems with subsetting CS objects, using the general
+function subset. I&#180;m preparing data for the upcoming workshop WKEID
+where we intend to use COST to look at discard data from several
+countries and years. When I try to subset on year using the general
+subset function I lose some records. 
+ 
+My example:
+I want to subset the CS object swe.cs which contains several years
+data:
+(looking at the SL table here)
+ 
+&gt;<i> table(<A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">swe.cs at sl</A>$year)
+</I> 
+2002 2003 2004 2006 2007 2008 2009 
+ 705  282  486  542  218  325  460 
+ 
+&gt;<i> swe.2009 &lt;-  subset(swe.cs, year==2009)
+</I> 
+&gt;<i> table(<A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">swe.2009 at sl</A>$year)
+</I> 
+2009 
+ 352 
+So there should be 460 records from 2009 in the sl table. If I specify
+a table &quot;above&quot; the SL, I also get different results depending on which
+one I choose. Maybe I&#180;m doing something wrong here, has anyone else
+experienced similar problems?
+ 
+Any advice on this would be most welcome! (If someone would like to
+take a closer look I will be happy to send the data.)
+ 
+Best regards
+Sofia Carlshamre
+ 
+Swedish Board of Fisheries
+Institute of Marine Research
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cost-project-users/attachments/20100922/0124a4ce/attachment.html">https://lists.berlios.de/pipermail/cost-project-users/attachments/20100922/0124a4ce/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000016.html">[cost-users] Subsetting in COST
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cost-project-users">More information about the Cost-project-users
+mailing list</a><br>
+</body></html>

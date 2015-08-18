@@ -1,0 +1,152 @@
+From sofia.carlshamre at fiskeriverket.se  Wed Sep 22 15:47:55 2010
+From: sofia.carlshamre at fiskeriverket.se (Sofia Carlshamre)
+Date: Wed, 22 Sep 2010 15:47:55 +0200
+Subject: [cost-users] Subsetting in COST
+Message-ID: <4C9A252B02000092000044B0@mail.fiskeriverket.se>
+
+Dear COST list
+ 
+I have some problems with subsetting CS objects, using the general
+function subset. I?m preparing data for the upcoming workshop WKEID
+where we intend to use COST to look at discard data from several
+countries and years. When I try to subset on year using the general
+subset function I lose some records. 
+ 
+My example:
+I want to subset the CS object swe.cs which contains several years
+data:
+(looking at the SL table here)
+ 
+> table(swe.cs at sl$year)
+ 
+2002 2003 2004 2006 2007 2008 2009 
+ 705  282  486  542  218  325  460 
+ 
+> swe.2009 <-  subset(swe.cs, year==2009)
+ 
+> table(swe.2009 at sl$year)
+ 
+2009 
+ 352 
+So there should be 460 records from 2009 in the sl table. If I specify
+a table "above" the SL, I also get different results depending on which
+one I choose. Maybe I?m doing something wrong here, has anyone else
+experienced similar problems?
+ 
+Any advice on this would be most welcome! (If someone would like to
+take a closer look I will be happy to send the data.)
+ 
+Best regards
+Sofia Carlshamre
+ 
+Swedish Board of Fisheries
+Institute of Marine Research
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100922/0124a4ce/attachment.html>
+
+From ernesto at ipimar.pt  Wed Sep 22 18:17:18 2010
+From: ernesto at ipimar.pt (Ernesto Jardim)
+Date: Wed, 22 Sep 2010 17:17:18 +0100
+Subject: [cost-users] Subsetting in COST
+In-Reply-To: <4C9A252B02000092000044B0@mail.fiskeriverket.se>
+References: <4C9A252B02000092000044B0@mail.fiskeriverket.se>
+Message-ID: <4C9A2C0E.8050504@ipimar.pt>
+
+On 09/22/2010 02:47 PM, Sofia Carlshamre wrote:
+> swe.2009 <-  subset(swe.cs, year==2009)
+Hi Sofia,
+
+I'm a bit "out of the blue" as I can't replicate the problem with the 
+sole dataset distributed by COSTcore.
+
+The workhorse is a function called subsetCOST which is not exported. You 
+can get it though with COSTcore:::subsetCOST .
+
+One way to look at the problem you have is to start debugging this 
+function and run subset again. Try
+
+debug(COSTcore:::subsetCOST)
+subset(swe.cs, year==2009)
+
+you'll be dumped in the function's environment, where your data will be 
+object "x". All the code will run line by line and you can inspect if 
+something went wrong.
+
+Have fun :-)
+
+and send me the data so I can take a quick look.
+
+Best
+
+EJ
+
+
+
+
+From sofia.carlshamre at fiskeriverket.se  Wed Sep 22 18:40:38 2010
+From: sofia.carlshamre at fiskeriverket.se (Sofia Carlshamre)
+Date: Wed, 22 Sep 2010 18:40:38 +0200
+Subject: [cost-users] Subsetting in COST
+In-Reply-To: <4C9A2C0E.8050504@ipimar.pt>
+References: <4C9A252B02000092000044B0@mail.fiskeriverket.se>
+	<4C9A2C0E.8050504@ipimar.pt>
+Message-ID: <4C9A4DA602000092000044C0@mail.fiskeriverket.se>
+
+Thank you, I also got a reply from Mathieu and it turns out that I did not have the latest version of COSTcore. I installed that and it seems to work now.
+ 
+Thanks again everyone for answering so quickly!
+ 
+Best regards
+Sofia
+ 
+
+
+>>> Ernesto Jardim <ernesto at ipimar.pt> 2010-09-22 18:17 >>>
+On 09/22/2010 02:47 PM, Sofia Carlshamre wrote:
+> swe.2009 <-  subset(swe.cs, year==2009)
+Hi Sofia,
+
+I'm a bit "out of the blue" as I can't replicate the problem with the 
+sole dataset distributed by COSTcore.
+
+The workhorse is a function called subsetCOST which is not exported. You 
+can get it though with COSTcore:::subsetCOST .
+
+One way to look at the problem you have is to start debugging this 
+function and run subset again. Try
+
+debug(COSTcore:::subsetCOST)
+subset(swe.cs, year==2009)
+
+you'll be dumped in the function's environment, where your data will be 
+object "x". All the code will run line by line and you can inspect if 
+something went wrong.
+
+Have fun :-)
+
+and send me the data so I can take a quick look.
+
+Best
+
+EJ
+
+
+_______________________________________________
+Cost-project-users mailing list
+Cost-project-users at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/cost-project-users
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100922/593c79f7/attachment.html>
+

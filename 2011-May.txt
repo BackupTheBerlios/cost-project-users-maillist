@@ -1,0 +1,104 @@
+From kih at aqua.dtu.dk  Thu May 26 20:52:24 2011
+From: kih at aqua.dtu.dk (=?iso-8859-1?Q?Kirsten_Birch_H=E5kansson?=)
+Date: Thu, 26 May 2011 20:52:24 +0200
+Subject: [cost-users] Lending samples in COST
+Message-ID: <AAD1945C8FDCF0488D845356BF31DB72910675@WINEXCHANGE5.win.dtu.dk>
+
+Hi
+
+Is it possible to lend e.g. samples from one quarter to another in COST, without putting them together as one.
+
+Example;
+
+ We have sampled GNS_DEF for discard in 1st, 2nd and 4th quarter and I would like to use the samples from the 4th on the landings in the 3rd quarter, but I would still like the final results per quarter.
+
+I can't seem to find any method in the manual, but I have overlooked it.
+
+Kind regards
+Kirsten Birch H?kansson
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110526/50fb7870/attachment.html>
+
+From david.maxwell at cefas.co.uk  Fri May 27 10:36:06 2011
+From: david.maxwell at cefas.co.uk (David Maxwell (Cefas))
+Date: Fri, 27 May 2011 09:36:06 +0100
+Subject: [cost-users] Lending samples in COST
+In-Reply-To: <AAD1945C8FDCF0488D845356BF31DB72910675@WINEXCHANGE5.win.dtu.dk>
+References: <AAD1945C8FDCF0488D845356BF31DB72910675@WINEXCHANGE5.win.dtu.dk>
+Message-ID: <8F90BAFE30CE2D458953FC0F1709830B02ABDD5D@LOWEXPRESS.corp.cefas.co.uk>
+
+Hi Kirsten,
+
+ 
+
+Unless the code has changed recently then I think this is not possible and that was a decision made on purpose. Joel will be able to confirm this.
+
+ 
+
+If samples are lent then the total number of samples will appear to be higher than the actual number of samples collected and the precision will be artificially improved. Therefore, the options available are to combine the quarters or not produce results in the quarter with no samples.
+
+ 
+
+Regards, David
+
+ 
+
+ 
+
+From: cost-project-users-bounces at lists.berlios.de [mailto:cost-project-users-bounces at lists.berlios.de] On Behalf Of Kirsten Birch H?kansson
+Sent: 26 May 2011 19:52
+To: Cost-project-users at lists.berlios.de
+Subject: [cost-users] Lending samples in COST
+
+ 
+
+Hi 
+
+ 
+
+Is it possible to lend e.g. samples from one quarter to another in COST, without putting them together as one. 
+
+ 
+
+Example; 
+
+ 
+
+ We have sampled GNS_DEF for discard in 1st, 2nd and 4th quarter and I would like to use the samples from the 4th on the landings in the 3rd quarter, but I would still like the final results per quarter.
+
+ 
+
+I can't seem to find any method in the manual, but I have overlooked it.
+
+ 
+
+Kind regards 
+
+Kirsten Birch H?kansson
+
+ 
+
+ 
+This email and any attachments are intended for the named recipient only. Its unauthorised use, distribution, disclosure, storage or copying is not permitted.
+If you have received it in error, please destroy all copies and notify the sender. In messages of a non-business nature, the views and opinions expressed are the author's own
+and do not necessarily reflect those of Cefas. 
+Communications on Cefas? computer systems may be monitored and/or recorded to secure the effective operation of the system and for other lawful purposes.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110527/4f9c08d9/attachment.html>
+
+From Joel.Vigneau at ifremer.fr  Fri May 27 11:06:21 2011
+From: Joel.Vigneau at ifremer.fr (Joel VIGNEAU)
+Date: Fri, 27 May 2011 11:06:21 +0200
+Subject: [cost-users] Lending samples in COST
+In-Reply-To: <8F90BAFE30CE2D458953FC0F1709830B02ABDD5D@LOWEXPRESS.corp.cefas.co.uk>
+References: <AAD1945C8FDCF0488D845356BF31DB72910675@WINEXCHANGE5.win.dtu.dk>
+	<8F90BAFE30CE2D458953FC0F1709830B02ABDD5D@LOWEXPRESS.corp.cefas.co.uk>
+Message-ID: <4DDF698D.3040204@ifremer.fr>
+
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110527/d2026171/attachment.html>
+

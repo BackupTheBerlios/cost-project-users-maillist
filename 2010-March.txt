@@ -1,0 +1,209 @@
+From sofia.carlshamre at fiskeriverket.se  Wed Mar 10 10:41:22 2010
+From: sofia.carlshamre at fiskeriverket.se (Sofia Carlshamre)
+Date: Wed, 10 Mar 2010 10:41:22 +0100
+Subject: [cost-users] Dear COST list,
+Message-ID: <4B977751.E5B0.0092.0@fiskeriverket.se>
+
+Dear COST list,
+we are tenaciously working with COST and here another question we hope you could help use to solve.
+
+We have unexpected different results when we raise n-at-length discards (from sea sampling data) by landing. on the contrary, all the other raising methods provide consistent results.
+
+Raising for the weight of discards by landing is ok, too. Thus, we expect that landing data are ok (they work for weight estimates), and length data are ok too (they work for the oether raising methods), but for some reason they do not work together.
+
+A second brief question: why the RaiseLgth method does not work with discards? Is it related to our data, or there some technical issue behind the method? Of course, I'm aware that totVolume(..., type="n-at-length") could do the same
+
+In attachment (sorry for posting stuff) we provide script and workspace with consolidated objects and stratification, that hopefully could help for understanding our issue.
+
+
+Thanks in advance for your time
+
+Sofia and Valerio
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: sea_sampling_Sofia2.r
+Type: application/octet-stream
+Size: 8788 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100310/ac3dfbef/attachment.obj>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Cod_dischards_seaSamp_area25-31_cons_Sofia.RData
+Type: application/octet-stream
+Size: 20452 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100310/ac3dfbef/attachment-0001.obj>
+
+From ernesto at ipimar.pt  Wed Mar 10 11:50:50 2010
+From: ernesto at ipimar.pt (Ernesto Jardim)
+Date: Wed, 10 Mar 2010 10:50:50 +0000
+Subject: [cost-users] Dear COST list,
+In-Reply-To: <4B977751.E5B0.0092.0@fiskeriverket.se>
+References: <4B977751.E5B0.0092.0@fiskeriverket.se>
+Message-ID: <4B97798A.8050000@ipimar.pt>
+
+Sofia Carlshamre wrote:
+> Dear COST list,
+> we are tenaciously working with COST and here another question we hope you could help use to solve.
+>
+> We have unexpected different results when we raise n-at-length discards (from sea sampling data) by landing. on the contrary, all the other raising methods provide consistent results.
+>
+> Raising for the weight of discards by landing is ok, too. Thus, we expect that landing data are ok (they work for weight estimates), and length data are ok too (they work for the oether raising methods), but for some reason they do not work together.
+>
+> A second brief question: why the RaiseLgth method does not work with discards? Is it related to our data, or there some technical issue behind the method? Of course, I'm aware that totVolume(..., type="n-at-length") could do the same
+>
+> In attachment (sorry for posting stuff) we provide script and workspace with consolidated objects and stratification, that hopefully could help for understanding our issue.
+>
+>
+> Thanks in advance for your time
+>
+> Sofia and Valerio
+Hi Sofia,
+
+I can't not find the problem. If no one replies on the next few hours I 
+suggest you email the maintainer David Maxwell <david.maxwell at cefas.co.uk>.
+
+Best
+
+EJ
+
+
+
+From david.maxwell at cefas.co.uk  Thu Mar 11 11:42:11 2010
+From: david.maxwell at cefas.co.uk (David Maxwell (Cefas))
+Date: Thu, 11 Mar 2010 10:42:11 -0000
+Subject: [cost-users] Dear COST list,
+In-Reply-To: <4B97798A.8050000@ipimar.pt>
+Message-ID: <8F90BAFE30CE2D458953FC0F1709830B01257D7B@LOWEXPRESS.corp.cefas.co.uk>
+
+Hi,
+We appreciate all your efforts to use and test the COST software. No need to email me separately as I'm on this list. I'm away at a meeting but may have chance to look at your data next week if Mathieu (who wrote the code) has not looked at before then.
+
+To everyone using the COST code what I suggest will be very useful is to create a list of bugs, issues & required enhancements. These lists could be combined and discussed at WKCOST.
+Regards, David
+
+-----Original Message-----
+From: cost-project-users-bounces at lists.berlios.de
+[mailto:cost-project-users-bounces at lists.berlios.de]On Behalf Of Ernesto
+Jardim
+Sent: 10 March 2010 10:51
+To: cost-project-users at lists.berlios.de
+Subject: Re: [cost-users] Dear COST list,
+
+
+Sofia Carlshamre wrote:
+> Dear COST list,
+> we are tenaciously working with COST and here another question we hope you could help use to solve.
+>
+> We have unexpected different results when we raise n-at-length discards (from sea sampling data) by landing. on the contrary, all the other raising methods provide consistent results.
+>
+> Raising for the weight of discards by landing is ok, too. Thus, we expect that landing data are ok (they work for weight estimates), and length data are ok too (they work for the oether raising methods), but for some reason they do not work together.
+>
+> A second brief question: why the RaiseLgth method does not work with discards? Is it related to our data, or there some technical issue behind the method? Of course, I'm aware that totVolume(..., type="n-at-length") could do the same
+>
+> In attachment (sorry for posting stuff) we provide script and workspace with consolidated objects and stratification, that hopefully could help for understanding our issue.
+>
+>
+> Thanks in advance for your time
+>
+> Sofia and Valerio
+Hi Sofia,
+
+I can't not find the problem. If no one replies on the next few hours I 
+suggest you email the maintainer David Maxwell <david.maxwell at cefas.co.uk>.
+
+Best
+
+EJ
+
+_______________________________________________
+Cost-project-users mailing list
+Cost-project-users at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/cost-project-users
+
+
+***********************************************************************************
+This email and any attachments are intended for the named recipient only.  Its unauthorised use, distribution, disclosure, storage or copying is not permitted.  If you have received it in error, please destroy all copies and notify the sender.  In messages of a non-business nature, the views and opinions expressed are the author's own and do not necessarily reflect those of the organisation from which it is sent.  All emails may be subject to monitoring.
+***********************************************************************************
+
+
+
+From sofia.carlshamre at fiskeriverket.se  Thu Mar 11 12:04:15 2010
+From: sofia.carlshamre at fiskeriverket.se (Sofia Carlshamre)
+Date: Thu, 11 Mar 2010 12:04:15 +0100
+Subject: [cost-users] Dear COST list,
+In-Reply-To: <8F90BAFE30CE2D458953FC0F1709830B01257D7B@LOWEXPRESS.corp.cefas.co.uk>
+References: <4B97798A.8050000@ipimar.pt>
+	<8F90BAFE30CE2D458953FC0F1709830B01257D7B@LOWEXPRESS.corp.cefas.co.uk>
+Message-ID: <4B98DC3F.E5B0.0092.0@fiskeriverket.se>
+
+Hi, David
+
+Thank you, and sorry for emailing you twice...
+I actually just recieved an answer from Mathieu with a new version of COST dbe and our problem seems to be solved now.
+
+Thanks again
+Sofia
+
+
+
+>>> "David Maxwell (Cefas)" <david.maxwell at cefas.co.uk> 03/11/10 11:42  >>>
+Hi,
+We appreciate all your efforts to use and test the COST software. No need to email me separately as I'm on this list. I'm away at a meeting but may have chance to look at your data next week if Mathieu (who wrote the code) has not looked at before then.
+
+To everyone using the COST code what I suggest will be very useful is to create a list of bugs, issues & required enhancements. These lists could be combined and discussed at WKCOST.
+Regards, David
+
+-----Original Message-----
+From: cost-project-users-bounces at lists.berlios.de 
+[mailto:cost-project-users-bounces at lists.berlios.de]On Behalf Of Ernesto
+Jardim
+Sent: 10 March 2010 10:51
+To: cost-project-users at lists.berlios.de 
+Subject: Re: [cost-users] Dear COST list,
+
+
+Sofia Carlshamre wrote:
+> Dear COST list,
+> we are tenaciously working with COST and here another question we hope you could help use to solve.
+>
+> We have unexpected different results when we raise n-at-length discards (from sea sampling data) by landing. on the contrary, all the other raising methods provide consistent results.
+>
+> Raising for the weight of discards by landing is ok, too. Thus, we expect that landing data are ok (they work for weight estimates), and length data are ok too (they work for the oether raising methods), but for some reason they do not work together.
+>
+> A second brief question: why the RaiseLgth method does not work with discards? Is it related to our data, or there some technical issue behind the method? Of course, I'm aware that totVolume(..., type="n-at-length") could do the same
+>
+> In attachment (sorry for posting stuff) we provide script and workspace with consolidated objects and stratification, that hopefully could help for understanding our issue.
+>
+>
+> Thanks in advance for your time
+>
+> Sofia and Valerio
+Hi Sofia,
+
+I can't not find the problem. If no one replies on the next few hours I 
+suggest you email the maintainer David Maxwell <david.maxwell at cefas.co.uk>.
+
+Best
+
+EJ
+
+_______________________________________________
+Cost-project-users mailing list
+Cost-project-users at lists.berlios.de 
+https://lists.berlios.de/mailman/listinfo/cost-project-users 
+
+
+***********************************************************************************
+This email and any attachments are intended for the named recipient only.  Its unauthorised use, distribution, disclosure, storage or copying is not permitted.  If you have received it in error, please destroy all copies and notify the sender.  In messages of a non-business nature, the views and opinions expressed are the author's own and do not necessarily reflect those of the organisation from which it is sent.  All emails may be subject to monitoring.
+***********************************************************************************
+
+_______________________________________________
+Cost-project-users mailing list
+Cost-project-users at lists.berlios.de 
+https://lists.berlios.de/mailman/listinfo/cost-project-users
+
+
+

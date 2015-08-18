@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cost-project-users/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cost-project-users%40lists.berlios.de?Subject=Re%3A%20%5Bcost-users%5D%20catchCat%3D%22Lan%22%20and%20catReg%3D%22LAN%22&In-Reply-To=%3C311FC0696D907542AED6761BAC60B2C90AE8B949%40MAILCLUST.Marine.ie%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000005.html">
+   <LINK REL="Next"  HREF="000007.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;</H1>
+    <B>Hans Gerritsen</B> 
+    <A HREF="mailto:cost-project-users%40lists.berlios.de?Subject=Re%3A%20%5Bcost-users%5D%20catchCat%3D%22Lan%22%20and%20catReg%3D%22LAN%22&In-Reply-To=%3C311FC0696D907542AED6761BAC60B2C90AE8B949%40MAILCLUST.Marine.ie%3E"
+       TITLE="[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;">hans.gerritsen at marine.ie
+       </A><BR>
+    <I>Fri Apr 23 15:18:38 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000005.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+        <LI>Next message: <A HREF="000007.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#6">[ date ]</a>
+              <a href="thread.html#6">[ thread ]</a>
+              <a href="subject.html#6">[ subject ]</a>
+              <a href="author.html#6">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi ernesto, hopefully the attached example works for you
+
+catReg is allowed to be 'LAN' according to the code list but my example
+only works if catReg is 'Lan'
+
+Thanks
+Hans
+
+
+
+-----Original Message-----
+From: <A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">cost-project-users-bounces at lists.berlios.de</A>
+[mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">cost-project-users-bounces at lists.berlios.de</A>] On Behalf Of
+Ernesto Jardim
+Sent: 23 April 2010 13:03
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">cost-project-users at lists.berlios.de</A>
+Subject: Re: [cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+
+Hans Gerritsen wrote:
+&gt;<i>
+</I>&gt;<i> Hello
+</I>&gt;<i>
+</I>&gt;<i> I have spent a long time trying to figure out why the function 
+</I>&gt;<i> RaiseLgth() was giving an error. It seems that the field catchCat in 
+</I>&gt;<i> HL,SL and CA should be &quot;Lan&quot; or &quot;Dis&quot; while the field catReg in HH 
+</I>&gt;<i> should be &quot;LAN&quot; or &quot;DIS&quot; (all capitals) this is not how it is 
+</I>&gt;<i> specified in the data exchange format in the final report and it also 
+</I>&gt;<i> seems to be different from previous versions of costDBE.
+</I>&gt;<i>
+</I>&gt;<i> Is there any way that the csData() function can be fixed so it accepts
+</I>
+&gt;<i> both formats (uppercase and lowercase) and only produces the 'correct'
+</I>
+&gt;<i> format (as above)?
+</I>&gt;<i>
+</I>&gt;<i> /Hans Gerritsen/
+</I>&gt;<i>
+</I>&gt;<i> /Marine Institute/
+</I>&gt;<i>
+</I>&gt;<i> /Rinville/
+</I>&gt;<i>
+</I>&gt;<i> /Oranmore/
+</I>&gt;<i>
+</I>&gt;<i> /Co. Galway/
+</I>&gt;<i>
+</I>&gt;<i> /Ireland/
+</I>&gt;<i>
+</I>Hi Hans,
+
+The function that check the codes is &quot;check.fields&quot;. You may check with 
+showMethods(&quot;csData&quot;, includeDefs=TRUE). This function uses a code list 
+called code.list . You may check with head(check.fields) . If you look 
+at the code.list for catchCat they are &quot;LAN&quot; and &quot;DIS&quot;.
+
+ &gt; data(code.list)
+ &gt; code.list$catchCat
+code description
+1 DIS Discard
+2 LAN Landing
+
+So a number of things can be happening. There may be a bug but also your
+
+object may not be properly built. Can you please send a replicable 
+example of the problem !?
+
+Best
+
+EJ
+
+_______________________________________________
+Cost-project-users mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">Cost-project-users at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/cost-project-users">https://lists.berlios.de/mailman/listinfo/cost-project-users</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Cs.RData
+Type: application/octet-stream
+Size: 10853 bytes
+Desc: Cs.RData
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cost-project-users/attachments/20100423/1b4e8011/attachment.obj">https://lists.berlios.de/pipermail/cost-project-users/attachments/20100423/1b4e8011/attachment.obj</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: for_ernesto.r
+Type: application/octet-stream
+Size: 948 bytes
+Desc: for_ernesto.r
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cost-project-users/attachments/20100423/1b4e8011/attachment-0001.obj">https://lists.berlios.de/pipermail/cost-project-users/attachments/20100423/1b4e8011/attachment-0001.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000005.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+	<LI>Next message: <A HREF="000007.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#6">[ date ]</a>
+              <a href="thread.html#6">[ thread ]</a>
+              <a href="subject.html#6">[ subject ]</a>
+              <a href="author.html#6">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cost-project-users">More information about the Cost-project-users
+mailing list</a><br>
+</body></html>

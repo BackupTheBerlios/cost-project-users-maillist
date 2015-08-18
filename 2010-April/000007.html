@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cost-project-users/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cost-project-users%40lists.berlios.de?Subject=Re%3A%20%5Bcost-users%5D%20catchCat%3D%22Lan%22%20and%20catReg%3D%22LAN%22&In-Reply-To=%3C4BD1C711.3040008%40ipimar.pt%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000006.html">
+   <LINK REL="Next"  HREF="000008.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;</H1>
+    <B>Ernesto Jardim</B> 
+    <A HREF="mailto:cost-project-users%40lists.berlios.de?Subject=Re%3A%20%5Bcost-users%5D%20catchCat%3D%22Lan%22%20and%20catReg%3D%22LAN%22&In-Reply-To=%3C4BD1C711.3040008%40ipimar.pt%3E"
+       TITLE="[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;">ernesto at ipimar.pt
+       </A><BR>
+    <I>Fri Apr 23 18:13:05 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000006.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+        <LI>Next message: <A HREF="000008.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+The problem is not with catchCat. As the code list shows, it should be 
+&quot;LAN&quot; or &quot;DIS&quot;
+
+ &gt; library(COSTdbe)
+Loading required package: COSTcore
+-------------------------------------------------------------------
+ COSTcore - &quot;The DCF Statistical Suite&quot;
+ (Version: 1.3-8. Built on: R 2.11.0; ; 2010-04-23 14:06:37 UTC; unix)
+-------------------------------------------------------------------
+Loading required package: lattice
+Loading required package: boot
+
+Attaching package: 'boot'
+
+The following object(s) are masked from 'package:lattice':
+
+    melanoma
+
+Loading required package: tcltk
+Loading Tcl/Tk interface ... done
+ &gt; data(code.list)
+ &gt; code.list$catchCat
+  code description
+1  DIS     Discard
+2  LAN     Landing
+
+The problem is with catReg that is accepted to be &quot;LAN&quot; or &quot;Lan&quot; (or others)
+
+ &gt; code.list$catReg
+  code                              description
+1  All                   Whole catch registered
+2  Lan Only landed fraction of catch registered
+3  Dis       Only discarded fraction registered
+4  Non             None of the catch registered
+5  ALL                   Whole catch registered
+6  LAN Only landed fraction of catch registered
+7  DIS       Only discarded fraction registered
+8  NON             None of the catch registered
+
+
+However, the RaiseLgth method, which calls a function &quot;Raise_Lgth&quot;, uses 
+another method called &quot;sampledFO&quot; that requires catReg to be &quot;Lan&quot;. When 
+you change codReg to &quot;LAN&quot; this method gives a empty result that later 
+breaks RaiseLgth.
+
+if you look at sampledFO with showMethods(&quot;sampledFO&quot;, includeDefs=TRUE)
+
+You may check that the fifth line is
+
+else frac &lt;- &quot;Lan&quot;
+
+and this is the problem. When you change catReg from &quot;Lan&quot; to &quot;LAN&quot; this 
+method fails and everything else too.
+
+Conclusion, there's nothing wrong with your data and using &quot;Lan&quot; for 
+catReg is ok, using &quot;LAN&quot; to catchCat is also ok. The bug is on 
+sampledFO, that should use &quot;Lan&quot; or &quot;LAN&quot;.
+
+I'll let the bug fixing for the package maintainer ;-)
+
+Hope it helped
+
+Best
+
+EJ
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000006.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+	<LI>Next message: <A HREF="000008.html">[cost-users] catchCat=&quot;Lan&quot; and catReg=&quot;LAN&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cost-project-users">More information about the Cost-project-users
+mailing list</a><br>
+</body></html>

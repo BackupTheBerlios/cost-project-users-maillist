@@ -1,0 +1,264 @@
+From kih at aqua.dtu.dk  Wed Feb  2 11:04:58 2011
+From: kih at aqua.dtu.dk (=?iso-8859-1?Q?Kirsten_Birch_H=E5kansson?=)
+Date: Wed, 2 Feb 2011 11:04:58 +0100
+Subject: [cost-users] Error message in COST
+Message-ID: <F741DC27F7402440B43CCAB93FA35F7C1989F1@lu-mail-san03.dfu.local>
+
+Hi
+
+ 
+
+ When I try to recode e.g. fishingactivities in COST (running in R 2.10.1) I get the following error message,
+
+ 
+
+Warning message:
+
+In `levels<-`(`*tmp*`, value = c("OTB_DEF_90-119_0_0", "OTB_DEF_90-119_0_0" :
+
+  duplicated levels will not be allowed in factors anymore
+
+ 
+
+ I don't get the error message when running COST in R 2.8.1. 
+
+ 
+
+ It looks like the result a least from totVolume are the same in both R-versions, so is it safe to ignore the error message?
+
+ 
+
+ I have attached the workspaces from both R 2.8.1 and 2.10.1.
+
+ 
+
+ Overall I'm a bit confused about all the R-versions, which one will you recommend for COST?
+
+ 
+
+Kind regards Kirsten
+
+ 
+
+ 
+
+  
+
+Kirsten Birch H?kansson 
+
+Akademisk medarbejder 
+
+DTU Aqua 
+ 
+
+Danmarks Tekniske Universitet
+
+ 
+
+Institut for Akvatiske Ressourcer 
+
+Charlottenlund Slot, J?gersborg All? 1 
+
+2920  Charlottenlund 
+
+Direkte telefon 33963469 
+
+kih at aqua.dtu.dk <mailto:kih at aqua.dtu.dk>  
+
+www.aqua.dtu.dk <http://www.aqua.dtu.dk>  
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110202/abb2e846/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image001.gif
+Type: image/gif
+Size: 58 bytes
+Desc: image001.gif
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110202/abb2e846/attachment.gif>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image002.gif
+Type: image/gif
+Size: 1055 bytes
+Desc: image002.gif
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110202/abb2e846/attachment-0001.gif>
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: COST_R2.8.1.txt
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110202/abb2e846/attachment.txt>
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: COST_R2.10.1.txt
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110202/abb2e846/attachment-0001.txt>
+
+From ernesto at ipimar.pt  Wed Feb  2 12:10:28 2011
+From: ernesto at ipimar.pt (Ernesto Jardim)
+Date: Wed, 02 Feb 2011 11:10:28 +0000
+Subject: [cost-users] Error message in COST
+In-Reply-To: <F741DC27F7402440B43CCAB93FA35F7C1989F1@lu-mail-san03.dfu.local>
+References: <F741DC27F7402440B43CCAB93FA35F7C1989F1@lu-mail-san03.dfu.local>
+Message-ID: <4D493BA4.7070704@ipimar.pt>
+
+On 02/02/2011 10:04 AM, Kirsten Birch H?kansson wrote:
+>
+> Hi
+>
+>  When I try to recode e.g. fishingactivities in COST (running in R 
+> 2.10.1) I get the following error message,
+>
+> Warning message:
+>
+> In `levels<-`(`*tmp*`, value = c("OTB_DEF_90-119_0_0", 
+> "OTB_DEF_90-119_0_0" :
+>
+>   duplicated levels will not be allowed in factors anymore
+>
+>  I don't get the error message when running COST in R 2.8.1.
+>
+>  It looks like the result a least from totVolume are the same in both 
+> R-versions, so is it safe to ignore the error message?
+>
+>  I have attached the workspaces from both R 2.8.1 and 2.10.1.
+>
+>  Overall I'm a bit confused about all the R-versions, which one will 
+> you recommend for COST?
+>
+> Kind regards Kirsten
+>
+Hi Kristen,
+
+You may use whatever version you prefer, COST runs on both, as far as I 
+remember. You must be aware of the COST version you're using, always use 
+the latest stable release.
+
+Regarding this error, it results from R development. In version 2.10.1 
+they don't allow duplicated levels for factors. As a matter of fact they 
+should have never allowed it ... check R news 
+(http://cran.r-project.org/src/base/NEWS)
+
+"factor(), levels()<-, etc, now ensure that the resulting factor levels are unique (as was always the implied intention). Factors with duplicated levels are still constructible by low-level means, but are now declared illegal."
+
+
+You may check the levels of your factor in both versions. I suppose you 
+have to use "levels(fishingactivities)" and check that they are the 
+same. Also check with "as.numeric(levels(fishingactivities))" to make 
+sure the internal factor coding is correct.
+
+Best
+
+EJ
+
+ps: next time don't send the R session, send the data and a small script 
+that people can run and replicate the error.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110202/9af2d334/attachment.html>
+
+From kih at aqua.dtu.dk  Wed Feb  2 17:31:17 2011
+From: kih at aqua.dtu.dk (=?iso-8859-1?Q?Kirsten_Birch_H=E5kansson?=)
+Date: Wed, 2 Feb 2011 17:31:17 +0100
+Subject: [cost-users] Error message in COST
+In-Reply-To: <4D493BA4.7070704@ipimar.pt>
+References: <F741DC27F7402440B43CCAB93FA35F7C1989F1@lu-mail-san03.dfu.local>
+	<4D493BA4.7070704@ipimar.pt>
+Message-ID: <F741DC27F7402440B43CCAB93FA35F7C1989FC@lu-mail-san03.dfu.local>
+
+Hi Ernesto
+
+ 
+
+ Thanks for your answer. I have checked the levels with string you send and it looks ok in the consolidated data.
+
+ 
+
+Kind regards Kirsten
+
+ 
+
+Fra: cost-project-users-bounces at lists.berlios.de [mailto:cost-project-users-bounces at lists.berlios.de] P? vegne af Ernesto Jardim
+Sendt: 02 February 2011 12:10
+Til: cost-project-users at lists.berlios.de
+Emne: Re: [cost-users] Error message in COST
+
+ 
+
+On 02/02/2011 10:04 AM, Kirsten Birch H?kansson wrote: 
+
+Hi
+
+ 
+
+ When I try to recode e.g. fishingactivities in COST (running in R 2.10.1) I get the following error message,
+
+ 
+
+Warning message:
+
+In `levels<-`(`*tmp*`, value = c("OTB_DEF_90-119_0_0", "OTB_DEF_90-119_0_0" :
+
+  duplicated levels will not be allowed in factors anymore
+
+ 
+
+ I don't get the error message when running COST in R 2.8.1. 
+
+ 
+
+ It looks like the result a least from totVolume are the same in both R-versions, so is it safe to ignore the error message?
+
+ 
+
+ I have attached the workspaces from both R 2.8.1 and 2.10.1.
+
+ 
+
+ Overall I'm a bit confused about all the R-versions, which one will you recommend for COST?
+
+ 
+
+Kind regards Kirsten
+
+Hi Kristen,
+
+You may use whatever version you prefer, COST runs on both, as far as I remember. You must be aware of the COST version you're using, always use the latest stable release.
+
+Regarding this error, it results from R development. In version 2.10.1 they don't allow duplicated levels for factors. As a matter of fact they should have never allowed it ... check R news (http://cran.r-project.org/src/base/NEWS)
+
+"factor(), levels()<-, etc, now ensure that the resulting factor levels are unique (as was always the implied intention). Factors with duplicated levels are still constructible by low-level means, but are now declared illegal."
+
+
+You may check the levels of your factor in both versions. I suppose you have to use "levels(fishingactivities)" and check that they are the same. Also check with "as.numeric(levels(fishingactivities))" to make sure the internal factor coding is correct.
+
+Best
+
+EJ
+
+ps: next time don't send the R session, send the data and a small script that people can run and replicate the error.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20110202/bf06dd73/attachment.html>
+

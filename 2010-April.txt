@@ -1,0 +1,705 @@
+From hans.gerritsen at marine.ie  Fri Apr 23 12:56:52 2010
+From: hans.gerritsen at marine.ie (Hans Gerritsen)
+Date: Fri, 23 Apr 2010 11:56:52 +0100
+Subject: [cost-users] catchCat="Lan" and catReg="LAN"
+Message-ID: <311FC0696D907542AED6761BAC60B2C90AE8B815@MAILCLUST.Marine.ie>
+
+Hello
+
+I have spent a long time trying to figure out why the function
+RaiseLgth() was giving an error. It seems that the field catchCat in
+HL,SL and CA should be "Lan" or "Dis" while the field catReg in HH
+should be "LAN" or "DIS" (all capitals) this is not how it is specified
+in the data exchange format in the final report and it also seems to be
+different from previous versions of costDBE.
+
+ 
+
+Is there any way that the csData() function can be fixed so it accepts
+both formats (uppercase and lowercase) and only produces the 'correct'
+format (as above)?
+
+ 
+
+ 
+
+Hans Gerritsen
+
+Marine Institute
+
+Rinville
+
+Oranmore
+
+Co. Galway
+
+Ireland
+
+ 
+
+Direct Line: +353 91 387297
+
+Mobile: +353 85 1463240
+
+Fax: +353 91 387201
+
+Email: hans.gerritsen at marine.ie
+
+Web: www.marine.ie
+
+P            Save a tree. Don't print this e-mail unless it's really
+necessary
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100423/13445eae/attachment.html>
+
+From ernesto at ipimar.pt  Fri Apr 23 14:02:32 2010
+From: ernesto at ipimar.pt (Ernesto Jardim)
+Date: Fri, 23 Apr 2010 13:02:32 +0100
+Subject: [cost-users] catchCat="Lan" and catReg="LAN"
+In-Reply-To: <311FC0696D907542AED6761BAC60B2C90AE8B815@MAILCLUST.Marine.ie>
+References: <311FC0696D907542AED6761BAC60B2C90AE8B815@MAILCLUST.Marine.ie>
+Message-ID: <4BD18C58.5050008@ipimar.pt>
+
+Hans Gerritsen wrote:
+>
+> Hello
+>
+> I have spent a long time trying to figure out why the function 
+> RaiseLgth() was giving an error. It seems that the field catchCat in 
+> HL,SL and CA should be ?Lan? or ?Dis? while the field catReg in HH 
+> should be ?LAN? or ?DIS? (all capitals) this is not how it is 
+> specified in the data exchange format in the final report and it also 
+> seems to be different from previous versions of costDBE.
+>
+> Is there any way that the csData() function can be fixed so it accepts 
+> both formats (uppercase and lowercase) and only produces the ?correct? 
+> format (as above)?
+>
+> /Hans Gerritsen/
+>
+> /Marine Institute/
+>
+> /Rinville/
+>
+> /Oranmore/
+>
+> /Co. Galway/
+>
+> /Ireland/
+>
+Hi Hans,
+
+The function that check the codes is "check.fields". You may check with 
+showMethods("csData", includeDefs=TRUE). This function uses a code list 
+called code.list . You may check with head(check.fields) . If you look 
+at the code.list for catchCat they are "LAN" and "DIS".
+
+ > data(code.list)
+ > code.list$catchCat
+code description
+1 DIS Discard
+2 LAN Landing
+
+So a number of things can be happening. There may be a bug but also your 
+object may not be properly built. Can you please send a replicable 
+example of the problem !?
+
+Best
+
+EJ
+
+
+
+From hans.gerritsen at marine.ie  Fri Apr 23 15:18:38 2010
+From: hans.gerritsen at marine.ie (Hans Gerritsen)
+Date: Fri, 23 Apr 2010 14:18:38 +0100
+Subject: [cost-users] catchCat="Lan" and catReg="LAN"
+References: <311FC0696D907542AED6761BAC60B2C90AE8B815@MAILCLUST.Marine.ie>
+	<4BD18C58.5050008@ipimar.pt>
+Message-ID: <311FC0696D907542AED6761BAC60B2C90AE8B949@MAILCLUST.Marine.ie>
+
+Hi ernesto, hopefully the attached example works for you
+
+catReg is allowed to be 'LAN' according to the code list but my example
+only works if catReg is 'Lan'
+
+Thanks
+Hans
+
+
+
+-----Original Message-----
+From: cost-project-users-bounces at lists.berlios.de
+[mailto:cost-project-users-bounces at lists.berlios.de] On Behalf Of
+Ernesto Jardim
+Sent: 23 April 2010 13:03
+To: cost-project-users at lists.berlios.de
+Subject: Re: [cost-users] catchCat="Lan" and catReg="LAN"
+
+Hans Gerritsen wrote:
+>
+> Hello
+>
+> I have spent a long time trying to figure out why the function 
+> RaiseLgth() was giving an error. It seems that the field catchCat in 
+> HL,SL and CA should be "Lan" or "Dis" while the field catReg in HH 
+> should be "LAN" or "DIS" (all capitals) this is not how it is 
+> specified in the data exchange format in the final report and it also 
+> seems to be different from previous versions of costDBE.
+>
+> Is there any way that the csData() function can be fixed so it accepts
+
+> both formats (uppercase and lowercase) and only produces the 'correct'
+
+> format (as above)?
+>
+> /Hans Gerritsen/
+>
+> /Marine Institute/
+>
+> /Rinville/
+>
+> /Oranmore/
+>
+> /Co. Galway/
+>
+> /Ireland/
+>
+Hi Hans,
+
+The function that check the codes is "check.fields". You may check with 
+showMethods("csData", includeDefs=TRUE). This function uses a code list 
+called code.list . You may check with head(check.fields) . If you look 
+at the code.list for catchCat they are "LAN" and "DIS".
+
+ > data(code.list)
+ > code.list$catchCat
+code description
+1 DIS Discard
+2 LAN Landing
+
+So a number of things can be happening. There may be a bug but also your
+
+object may not be properly built. Can you please send a replicable 
+example of the problem !?
+
+Best
+
+EJ
+
+_______________________________________________
+Cost-project-users mailing list
+Cost-project-users at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/cost-project-users
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Cs.RData
+Type: application/octet-stream
+Size: 10853 bytes
+Desc: Cs.RData
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100423/1b4e8011/attachment.obj>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: for_ernesto.r
+Type: application/octet-stream
+Size: 948 bytes
+Desc: for_ernesto.r
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100423/1b4e8011/attachment-0001.obj>
+
+From ernesto at ipimar.pt  Fri Apr 23 18:13:05 2010
+From: ernesto at ipimar.pt (Ernesto Jardim)
+Date: Fri, 23 Apr 2010 17:13:05 +0100
+Subject: [cost-users] catchCat="Lan" and catReg="LAN"
+In-Reply-To: <311FC0696D907542AED6761BAC60B2C90AE8B949@MAILCLUST.Marine.ie>
+References: <311FC0696D907542AED6761BAC60B2C90AE8B815@MAILCLUST.Marine.ie>	<4BD18C58.5050008@ipimar.pt>
+	<311FC0696D907542AED6761BAC60B2C90AE8B949@MAILCLUST.Marine.ie>
+Message-ID: <4BD1C711.3040008@ipimar.pt>
+
+Hi,
+
+The problem is not with catchCat. As the code list shows, it should be 
+"LAN" or "DIS"
+
+ > library(COSTdbe)
+Loading required package: COSTcore
+-------------------------------------------------------------------
+ COSTcore - "The DCF Statistical Suite"
+ (Version: 1.3-8. Built on: R 2.11.0; ; 2010-04-23 14:06:37 UTC; unix)
+-------------------------------------------------------------------
+Loading required package: lattice
+Loading required package: boot
+
+Attaching package: 'boot'
+
+The following object(s) are masked from 'package:lattice':
+
+    melanoma
+
+Loading required package: tcltk
+Loading Tcl/Tk interface ... done
+ > data(code.list)
+ > code.list$catchCat
+  code description
+1  DIS     Discard
+2  LAN     Landing
+
+The problem is with catReg that is accepted to be "LAN" or "Lan" (or others)
+
+ > code.list$catReg
+  code                              description
+1  All                   Whole catch registered
+2  Lan Only landed fraction of catch registered
+3  Dis       Only discarded fraction registered
+4  Non             None of the catch registered
+5  ALL                   Whole catch registered
+6  LAN Only landed fraction of catch registered
+7  DIS       Only discarded fraction registered
+8  NON             None of the catch registered
+
+
+However, the RaiseLgth method, which calls a function "Raise_Lgth", uses 
+another method called "sampledFO" that requires catReg to be "Lan". When 
+you change codReg to "LAN" this method gives a empty result that later 
+breaks RaiseLgth.
+
+if you look at sampledFO with showMethods("sampledFO", includeDefs=TRUE)
+
+You may check that the fifth line is
+
+else frac <- "Lan"
+
+and this is the problem. When you change catReg from "Lan" to "LAN" this 
+method fails and everything else too.
+
+Conclusion, there's nothing wrong with your data and using "Lan" for 
+catReg is ok, using "LAN" to catchCat is also ok. The bug is on 
+sampledFO, that should use "Lan" or "LAN".
+
+I'll let the bug fixing for the package maintainer ;-)
+
+Hope it helped
+
+Best
+
+EJ
+
+
+
+
+
+
+From Joel.Vigneau at ifremer.fr  Mon Apr 26 09:44:10 2010
+From: Joel.Vigneau at ifremer.fr (Joel VIGNEAU)
+Date: Mon, 26 Apr 2010 09:44:10 +0200
+Subject: [cost-users] catchCat="Lan" and catReg="LAN"
+In-Reply-To: <4BD1C711.3040008@ipimar.pt>
+References: <311FC0696D907542AED6761BAC60B2C90AE8B815@MAILCLUST.Marine.ie>	<4BD18C58.5050008@ipimar.pt>	<311FC0696D907542AED6761BAC60B2C90AE8B949@MAILCLUST.Marine.ie>
+	<4BD1C711.3040008@ipimar.pt>
+Message-ID: <4BD5444A.3090907@ifremer.fr>
+
+Ernesto,
+
+You would have had a brilliant carreer as a detective!
+With this only email I learn a lot on how to look at a method.
+thanks for this.
+
+I'm sure Mathieu will arrange this very quickly with adding "toupper" 
+before using the variable.
+With the outcome of the recent WKCOST, new releases of the different 
+libraries will have to be uploaded on the website. When? is the 
+principal question...
+
+best regards
+
+Joel
+
+
+Le 23/04/2010 18:13, Ernesto Jardim a ?crit :
+> Hi,
+>
+> The problem is not with catchCat. As the code list shows, it should be 
+> "LAN" or "DIS"
+>
+> > library(COSTdbe)
+> Loading required package: COSTcore
+> -------------------------------------------------------------------
+> COSTcore - "The DCF Statistical Suite"
+> (Version: 1.3-8. Built on: R 2.11.0; ; 2010-04-23 14:06:37 UTC; unix)
+> -------------------------------------------------------------------
+> Loading required package: lattice
+> Loading required package: boot
+>
+> Attaching package: 'boot'
+>
+> The following object(s) are masked from 'package:lattice':
+>
+>    melanoma
+>
+> Loading required package: tcltk
+> Loading Tcl/Tk interface ... done
+> > data(code.list)
+> > code.list$catchCat
+>  code description
+> 1  DIS     Discard
+> 2  LAN     Landing
+>
+> The problem is with catReg that is accepted to be "LAN" or "Lan" (or 
+> others)
+>
+> > code.list$catReg
+>  code                              description
+> 1  All                   Whole catch registered
+> 2  Lan Only landed fraction of catch registered
+> 3  Dis       Only discarded fraction registered
+> 4  Non             None of the catch registered
+> 5  ALL                   Whole catch registered
+> 6  LAN Only landed fraction of catch registered
+> 7  DIS       Only discarded fraction registered
+> 8  NON             None of the catch registered
+>
+>
+> However, the RaiseLgth method, which calls a function "Raise_Lgth", 
+> uses another method called "sampledFO" that requires catReg to be 
+> "Lan". When you change codReg to "LAN" this method gives a empty 
+> result that later breaks RaiseLgth.
+>
+> if you look at sampledFO with showMethods("sampledFO", includeDefs=TRUE)
+>
+> You may check that the fifth line is
+>
+> else frac <- "Lan"
+>
+> and this is the problem. When you change catReg from "Lan" to "LAN" 
+> this method fails and everything else too.
+>
+> Conclusion, there's nothing wrong with your data and using "Lan" for 
+> catReg is ok, using "LAN" to catchCat is also ok. The bug is on 
+> sampledFO, that should use "Lan" or "LAN".
+>
+> I'll let the bug fixing for the package maintainer ;-)
+>
+> Hope it helped
+>
+> Best
+>
+> EJ
+>
+>
+>
+>
+> _______________________________________________
+> Cost-project-users mailing list
+> Cost-project-users at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/cost-project-users
+
+-- 
+
+*/Jo?l VIGNEAU/*
+
+IFREMER
+
+Laboratoire "Ressources Halieutiques"
+
+14 520 Port-en-Bessin
+
+T?l. (33)2 31 51 56 41  - Fax (33)2 31 51 56 01
+
+m?l : Joel.Vigneau at ifremer.fr <mailto:Joel.Vigneau at ifremer.fr>
+
+web : http://www.ifremer.fr <http://www.ifremer.fr/>
+
+COST project coordinator
+
+http://wwz.ifremer.fr/cost
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100426/da196631/attachment.html>
+
+From Joel.Vigneau at ifremer.fr  Thu Apr 29 15:41:22 2010
+From: Joel.Vigneau at ifremer.fr (Joel.Vigneau at ifremer.fr)
+Date: Thu, 29 Apr 2010 15:41:22 +0200
+Subject: [cost-users] New releases
+Message-ID: <20100429154122.20380bsfsvltpchs@efflammail.ifremer.fr>
+
+Dear COST users,
+
+a new release of packages COSTcore, COSTdbe and COSTeda has been  
+updated on the website.
+These releases fix some bugs seen during and after the WKCOST such as  
+doing the same actions independently of the use of capital letters in  
+catchCat ("LAN" or "Lan", "DIS" or "Dis") and also some bug in  
+RaiseLgth where certain conditions where providing a wrong response  
+(samples weighted but not measured).
+
+The releases have the same versioning
+COSTcore_1.3-8.zip
+COSTdbe_1.3-6.zip
+COSTeda_1.3-6.zip
+
+Please make sure to replace your versions by these ones.
+
+Best regards
+
+Joel
+
+
+
+
+
+From ernesto at ipimar.pt  Thu Apr 29 15:59:58 2010
+From: ernesto at ipimar.pt (Ernesto Jardim)
+Date: Thu, 29 Apr 2010 14:59:58 +0100
+Subject: [cost-users] New releases
+In-Reply-To: <20100429154122.20380bsfsvltpchs@efflammail.ifremer.fr>
+References: <20100429154122.20380bsfsvltpchs@efflammail.ifremer.fr>
+Message-ID: <4BD990DE.7050107@ipimar.pt>
+
+Joel.Vigneau at ifremer.fr wrote:
+> Dear COST users,
+>
+> a new release of packages COSTcore, COSTdbe and COSTeda has been 
+> updated on the website.
+> These releases fix some bugs seen during and after the WKCOST such as 
+> doing the same actions independently of the use of capital letters in 
+> catchCat ("LAN" or "Lan", "DIS" or "Dis") and also some bug in 
+> RaiseLgth where certain conditions where providing a wrong response 
+> (samples weighted but not measured).
+>
+> The releases have the same versioning
+> COSTcore_1.3-8.zip
+> COSTdbe_1.3-6.zip
+> COSTeda_1.3-6.zip
+>
+> Please make sure to replace your versions by these ones.
+>
+> Best regards
+>
+> Joel
+Hi Joel,
+
+Are these versions on CVS ?
+
+EJ
+
+
+From Joel.Vigneau at ifremer.fr  Thu Apr 29 15:49:11 2010
+From: Joel.Vigneau at ifremer.fr (Joel.Vigneau at ifremer.fr)
+Date: Thu, 29 Apr 2010 15:49:11 +0200
+Subject: [cost-users] New releases
+In-Reply-To: <4BD990DE.7050107@ipimar.pt>
+References: <20100429154122.20380bsfsvltpchs@efflammail.ifremer.fr>
+	<4BD990DE.7050107@ipimar.pt>
+Message-ID: <20100429154911.60895uxfooavpxss@efflammail.ifremer.fr>
+
+
+Quoting Ernesto Jardim <ernesto at ipimar.pt>:
+
+> Joel.Vigneau at ifremer.fr wrote:
+>> Dear COST users,
+>>
+>> a new release of packages COSTcore, COSTdbe and COSTeda has been  
+>> updated on the website.
+>> These releases fix some bugs seen during and after the WKCOST such  
+>> as doing the same actions independently of the use of capital  
+>> letters in catchCat ("LAN" or "Lan", "DIS" or "Dis") and also some  
+>> bug in RaiseLgth where certain conditions where providing a wrong  
+>> response (samples weighted but not measured).
+>>
+>> The releases have the same versioning
+>> COSTcore_1.3-8.zip
+>> COSTdbe_1.3-6.zip
+>> COSTeda_1.3-6.zip
+>>
+>> Please make sure to replace your versions by these ones.
+>>
+>> Best regards
+>>
+>> Joel
+> Hi Joel,
+>
+> Are these versions on CVS ?
+>
+> EJ
+
+Ernesto,
+
+Mathieu is updating the CVS now. It should be ready very soon.
+
+Regards
+
+Joel
+
+
+> _______________________________________________
+> Cost-project-users mailing list
+> Cost-project-users at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/cost-project-users
+>
+
+
+
+
+
+From paz.sampedro at co.ieo.es  Fri Apr 30 10:59:12 2010
+From: paz.sampedro at co.ieo.es (Paz Sampedro)
+Date: Fri, 30 Apr 2010 10:59:12 +0200
+Subject: [cost-users] New releases
+References: <20100429154122.20380bsfsvltpchs@efflammail.ifremer.fr>
+Message-ID: <50EB6473669C6741AC34FF5692DCC456288BC3@ieocoruna.co.ieo.es>
+
+Hi Joel, 
+
+I tried to download the new libraries from the website but it has a
+"IFREMER secure access system" that asked me for a username and a
+password. Is it necessary to have this password to download the packages
+from the website?.
+
+Best,
+
+Paz
+
+
+_______________________________________________
+Cost-project-users mailing list
+Cost-project-users at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/cost-project-users
+
+
+From Joel.Vigneau at ifremer.fr  Fri Apr 30 11:20:12 2010
+From: Joel.Vigneau at ifremer.fr (Joel VIGNEAU)
+Date: Fri, 30 Apr 2010 11:20:12 +0200
+Subject: [cost-users] New releases
+In-Reply-To: <50EB6473669C6741AC34FF5692DCC456288BC3@ieocoruna.co.ieo.es>
+References: <20100429154122.20380bsfsvltpchs@efflammail.ifremer.fr>
+	<50EB6473669C6741AC34FF5692DCC456288BC3@ieocoruna.co.ieo.es>
+Message-ID: <4BDAA0CC.3030700@ifremer.fr>
+
+Hi Paz,
+
+no that was an old bug that I thought was fixed. I look at this now, try 
+within 15 minutes, otherwise go directly on the BERLIOS website.
+
+Regards
+
+Joel
+
+
+Le 30/04/2010 10:59, Paz Sampedro a ?crit :
+> Hi Joel,
+>
+> I tried to download the new libraries from the website but it has a
+> "IFREMER secure access system" that asked me for a username and a
+> password. Is it necessary to have this password to download the packages
+> from the website?.
+>
+> Best,
+>
+> Paz
+>
+>
+> _______________________________________________
+> Cost-project-users mailing list
+> Cost-project-users at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/cost-project-users
+> _______________________________________________
+> Cost-project-users mailing list
+> Cost-project-users at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/cost-project-users
+>    
+
+-- 
+
+*/Jo?l VIGNEAU/*
+
+IFREMER
+
+Laboratoire "Ressources Halieutiques"
+
+14 520 Port-en-Bessin
+
+T?l. (33)2 31 51 56 41  - Fax (33)2 31 51 56 01
+
+m?l : Joel.Vigneau at ifremer.fr <mailto:Joel.Vigneau at ifremer.fr>
+
+web : http://www.ifremer.fr <http://www.ifremer.fr/>
+
+COST project coordinator
+
+http://wwz.ifremer.fr/cost
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100430/0d2ea946/attachment.html>
+
+From Joel.Vigneau at ifremer.fr  Fri Apr 30 11:29:28 2010
+From: Joel.Vigneau at ifremer.fr (Joel VIGNEAU)
+Date: Fri, 30 Apr 2010 11:29:28 +0200
+Subject: [cost-users] New releases
+In-Reply-To: <50EB6473669C6741AC34FF5692DCC456288BC3@ieocoruna.co.ieo.es>
+References: <20100429154122.20380bsfsvltpchs@efflammail.ifremer.fr>
+	<50EB6473669C6741AC34FF5692DCC456288BC3@ieocoruna.co.ieo.es>
+Message-ID: <4BDAA2F8.6050405@ifremer.fr>
+
+Now the COST website is back to normal
+
+I think we should add in the COST 2.0 proposal the setting of a 
+www.cost-project.org website.
+
+Best regards
+
+Joel
+
+
+
+Le 30/04/2010 10:59, Paz Sampedro a ?crit :
+> Hi Joel,
+>
+> I tried to download the new libraries from the website but it has a
+> "IFREMER secure access system" that asked me for a username and a
+> password. Is it necessary to have this password to download the packages
+> from the website?.
+>
+> Best,
+>
+> Paz
+>
+>
+> _______________________________________________
+> Cost-project-users mailing list
+> Cost-project-users at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/cost-project-users
+> _______________________________________________
+> Cost-project-users mailing list
+> Cost-project-users at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/cost-project-users
+>    
+
+-- 
+
+*/Jo?l VIGNEAU/*
+
+IFREMER
+
+Laboratoire "Ressources Halieutiques"
+
+14 520 Port-en-Bessin
+
+T?l. (33)2 31 51 56 41  - Fax (33)2 31 51 56 01
+
+m?l : Joel.Vigneau at ifremer.fr <mailto:Joel.Vigneau at ifremer.fr>
+
+web : http://www.ifremer.fr <http://www.ifremer.fr/>
+
+COST project coordinator
+
+http://wwz.ifremer.fr/cost
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/cost-project-users/attachments/20100430/4e5b08c3/attachment.html>
+
